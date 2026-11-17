@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Меню</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v=6">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1 id="name"></h1>
+            <p id="description"></p>
+        </header>
+
+        <nav class="tabs" id="tabs"></nav>
+        <main class="grid" id="grid"></main>
+    </div>
+
+    <button class="cart-button" id="cartButton" onclick="openCart()" hidden></button>
+
+    <div class="modal" id="modal">
+        <div class="sheet" id="cart">
+            <div class="sheet-head">
+                <h2>Ваш заказ</h2>
+                <button class="close" onclick="closeCart()">✕</button>
+            </div>
+            <div id="cartItems"></div>
+            <form id="form">
+                <input name="name" placeholder="Имя" required>
+                <label class="field-label" for="phone">Телефон</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 (999) 123-45-67" maxlength="40" required>
+                <fieldset class="delivery-fields">
+                    <legend>Адрес доставки</legend>
+                    <label class="field-label" for="city">Город</label>
+                    <input id="city" name="city" placeholder="Город" autocomplete="address-level2" maxlength="100" required>
+                    <label class="field-label" for="street">Улица</label>
+                    <input id="street" name="street" placeholder="Улица" maxlength="160" required>
+                    <div class="address-row">
+                        <label class="address-field">Дом<input name="house" placeholder="12, корпус 2" maxlength="30" required></label>
+                        <label class="address-field">Квартира<input name="apartment" placeholder="Номер" maxlength="20" required></label>
+                    </div>
+                    <label class="private-house"><input name="private_house" type="checkbox">Частный дом</label>
+                    <div class="address-row">
+                        <label class="address-field">Подъезд<input name="entrance" placeholder="Необязательно" maxlength="20"></label>
+                        <label class="address-field">Этаж<input name="floor" placeholder="Необязательно" maxlength="20"></label>
+                    </div>
+                </fieldset>
+                <input name="comment" placeholder="Комментарий (необязательно)">
+                <button class="submit" id="submit"></button>
+            </form>
+        </div>
+
+        <div class="sheet success" id="success" hidden>
+            <div class="check">✓</div>
+            <h2 id="successTitle"></h2>
+            <p>Мы уже получили заказ. Статус придёт сообщением в бот.</p>
+            <button class="submit" onclick="closeCart()">Вернуться в меню</button>
+        </div>
+    </div>
+
+    <script src="/static/app.js?v=6"></script>
+</body>
+</html>

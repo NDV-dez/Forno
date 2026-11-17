@@ -1,0 +1,31 @@
+{
+  "name": "Forno",
+  "description": "Пицца из дровяной печи. Привезём горячей за 45 минут.",
+  "accent": "#E4572E",
+  "currency": "₽",
+  "products": [
+    { "id": 1,  "category": "Пицца",   "name": "Маргарита",        "price": 490,  "image": "margherita.jpg",    "description": "Томатный соус, моцарелла, базилик" },
+    { "id": 2,  "category": "Пицца",   "name": "Пепперони",        "price": 590,  "image": "pepperoni.jpg",     "description": "Пикантная пепперони и много моцареллы" },
+    { "id": 3,  "category": "Пицца",   "name": "Четыре сыра",      "price": 650,  "image": "four-cheese.jpg",   "description": "Моцарелла, горгонзола, пармезан, чеддер" },
+    { "id": 4,  "category": "Пицца",   "name": "Ветчина и грибы",  "price": 560,  "image": "ham-mushrooms.jpg", "description": "Ветчина, шампиньоны, сливочный соус" },
+    { "id": 5,  "category": "Пицца",   "name": "Гавайская",        "price": 570,  "image": "hawaiian.jpg",      "description": "Ветчина, ананасы, моцарелла" },
+    { "id": 6,  "category": "Пицца",   "name": "Диабло",           "price": 620,  "image": "diablo.jpg",        "description": "Острая колбаса, халапеньо, красный лук" },
+
+    { "id": 7,  "category": "Комбо",   "name": "Обед",             "price": 790,  "image": "combo-lunch.jpg",   "description": "Любая пицца, картофель фри и кола" },
+    { "id": 8,  "category": "Комбо",   "name": "На двоих",         "price": 1290, "image": "combo-two.jpg",     "description": "Две пиццы и два напитка на выбор" },
+    { "id": 9,  "category": "Комбо",   "name": "Вечеринка",        "price": 2490, "image": "combo-party.jpg",   "description": "Три пиццы, крылья, фри и два напитка" },
+
+    { "id": 10, "category": "Закуски", "name": "Картофель фри",    "price": 190,  "image": "fries.jpg",         "description": "С кетчупом, 150 г" },
+    { "id": 11, "category": "Закуски", "name": "Крылья BBQ",       "price": 350,  "image": "wings.jpg",         "description": "8 штук, соус барбекю" },
+    { "id": 12, "category": "Закуски", "name": "Цезарь",           "price": 390,  "image": "caesar.jpg",        "description": "Курица, романо, пармезан, гренки" },
+    { "id": 13, "category": "Закуски", "name": "Брускетта",        "price": 290,  "image": "bruschetta.jpg",    "description": "Томаты, чеснок, базилик на хлебе из печи" },
+
+    { "id": 14, "category": "Напитки", "name": "Кола",             "price": 150,  "image": "cola.jpg",          "description": "0,5 л" },
+    { "id": 15, "category": "Напитки", "name": "Лимонад",          "price": 190,  "image": "lemonade.jpg",      "description": "Домашний, с мятой и лаймом, 0,4 л" },
+    { "id": 16, "category": "Напитки", "name": "Апельсиновый сок", "price": 220,  "image": "orange-juice.jpg",  "description": "Свежевыжатый, 0,3 л" },
+    { "id": 17, "category": "Напитки", "name": "Латте",            "price": 210,  "image": "latte.jpg",         "description": "Двойной эспрессо и молоко, 0,3 л" },
+
+    { "id": 18, "category": "Десерты", "name": "Тирамису",         "price": 350,  "image": "tiramisu.jpg",      "description": "Маскарпоне, савоярди, эспрессо" },
+    { "id": 19, "category": "Десерты", "name": "Чизкейк",          "price": 320,  "image": "cheesecake.jpg",    "description": "Нью-Йорк с клубникой" }
+  ]
+}

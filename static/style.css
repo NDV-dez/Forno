@@ -1,0 +1,250 @@
+
+:root {
+    --bg: var(--tg-theme-bg-color, #ffffff);
+    --text: var(--tg-theme-text-color, #1c1b1a);
+    --hint: var(--tg-theme-hint-color, #756c63);
+    --card: var(--tg-theme-secondary-bg-color, #f4f2ef);
+    --accent: #E4572E; /* перезаписывается цветом из shop.json */
+    --canvas: color-mix(in srgb, var(--bg) 92%, #e9b97c);
+    --surface: color-mix(in srgb, var(--bg) 97%, #e9b97c);
+    --edge: color-mix(in srgb, var(--text) 9%, transparent);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    min-height: 100vh;
+    background-color: var(--canvas);
+    background-image:
+        radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 48%),
+        radial-gradient(ellipse at 0% 65%, #e9b97c26, transparent 52%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button, input { font: inherit; color: inherit; border: none; background: none; }
+button { cursor: pointer; }
+
+.page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 28px 16px 110px;
+}
+
+/* Шапка */
+h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 34px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+h1::after { content: '.'; color: var(--accent); }
+
+header p {
+    margin-top: 6px;
+    color: var(--hint);
+    font-size: 15px;
+    max-width: 320px;
+}
+
+header { padding: 12px 0 6px; }
+
+/* Категории */
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin: 24px -16px 20px;
+    padding: 0 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+    padding: 9px 16px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--edge);
+    font-weight: 600;
+    white-space: nowrap;
+}
+.tab.active { background: var(--accent); color: #fff; border-color: transparent; }
+
+/* Карточки товаров */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px 12px;
+}
+
+.card {
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid var(--edge);
+    border-radius: 24px;
+    background: var(--surface);
+    box-shadow: 0 5px 20px #40230e08;
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 16px;
+    background: var(--card);
+}
+.card h3 { margin-top: 10px; font-size: 16px; }
+.card p {
+    margin-top: 2px;
+    color: var(--hint);
+    font-size: 13px;
+    line-height: 1.35;
+    min-height: 35px;
+}
+
+.card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 12px;
+    font-weight: 700;
+}
+
+.add {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+    color: var(--accent);
+    font-size: 22px;
+}
+
+.stepper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 20px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+}
+.stepper button { width: 32px; height: 36px; font-size: 18px; }
+.stepper span { min-width: 12px; text-align: center; }
+
+/* Кнопка корзины */
+.cart-button {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 420px;
+    padding: 16px;
+    border-radius: 18px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+}
+
+/* Корзина снизу экрана */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(0, 0, 0, .4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+}
+.modal.open { opacity: 1; pointer-events: auto; }
+
+.sheet {
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px 16px 24px;
+    border-radius: 24px 24px 0 0;
+    background: var(--bg);
+    transform: translateY(40px);
+    transition: transform .25s;
+}
+.modal.open .sheet { transform: none; }
+
+.sheet-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.sheet-head h2 { font-size: 22px; }
+.close { width: 34px; height: 34px; border-radius: 50%; background: var(--card); color: var(--hint); }
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+}
+.cart-item img { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; }
+.cart-item div { flex: 1; }
+.cart-item small { color: var(--hint); font-size: 14px; }
+.cart-item .stepper { background: var(--card); color: var(--text); }
+
+form { display: grid; gap: 10px; margin-top: 16px; }
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: var(--card);
+    font-size: 16px;
+    outline: none;
+}
+input::placeholder { color: var(--hint); }
+
+.field-label, .address-field { font-size: 13px; font-weight: 600; }
+.field-hint { color: var(--hint); font-size: 12px; margin-top: -4px; }
+.delivery-fields { border: 0; display: grid; gap: 8px; margin-top: 10px; min-width: 0; }
+.delivery-fields legend { font-weight: 700; padding-bottom: 12px; }
+.address-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.address-field { display: grid; gap: 6px; min-width: 0; }
+.private-house { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px; }
+.private-house input { width: 20px; height: 20px; accent-color: var(--accent); }
+.address-field input:disabled { opacity: .45; }
+input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.submit {
+    margin-top: 6px;
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+}
+.submit:disabled { opacity: .6; }
+
+/* Заказ оформлен */
+.success { text-align: center; padding-top: 36px; }
+.success p { margin: 8px auto 20px; color: var(--hint); max-width: 280px; }
+.success .submit { width: 100%; }
+.check {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 30px;
+    line-height: 64px;
+}
